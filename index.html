@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Website without a Static Website Generator</title>
+</head><body><header>
+<h1>My Website without a Static Website Generator</h1>
+</header>
+<main>
+<h1>You Might Not Need a Static Website Generator</h1>
+<p>👍</p>
+<pre class="shiki" style="background-color: #FFFFFF"><code><span style="color: #0000FF">for</span><span style="color: #000000"> (</span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">path</span><span style="color: #000000"> </span><span style="color: #0000FF">of</span><span style="color: #000000"> </span><span style="color: #001080">glob</span><span style="color: #000000">.</span><span style="color: #795E26">sync</span><span style="color: #000000">(</span><span style="color: #A31515">"**/*.md"</span><span style="color: #000000">, { </span><span style="color: #001080">ignore:</span><span style="color: #000000"> [</span><span style="color: #A31515">"node_modules/**"</span><span style="color: #000000">] })) {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">text</span><span style="color: #000000"> = fs.</span><span style="color: #795E26">readFileSync</span><span style="color: #000000">(path, </span><span style="color: #A31515">"utf8"</span><span style="color: #000000">);</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">markdown</span><span style="color: #000000"> = </span><span style="color: #A31515">`&lt;!DOCTYPE html&gt;</span>
+<span style="color: #A31515">&lt;html lang="en"&gt;</span>
+<span style="color: #A31515">&lt;meta charset="UTF-8"&gt;</span>
+<span style="color: #A31515">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+<span style="color: #A31515">&lt;title&gt;My Website without a Static Website Generator&lt;/title&gt;</span>
+<span style="color: #A31515">&lt;header&gt;</span>
+
+<span style="color: #A31515"># My Website without a Static Website Generator</span>
+
+<span style="color: #A31515">&lt;/header&gt;</span>
+<span style="color: #A31515">&lt;main&gt;</span>
+
+<span style="color: #0000FF">${</span><span style="color: #001080">text</span><span style="color: #0000FF">}</span>
+
+<span style="color: #A31515">&lt;/main&gt;</span>
+<span style="color: #A31515">  `</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #001080">html</span><span style="color: #000000"> = </span><span style="color: #795E26">remark</span><span style="color: #000000">().</span><span style="color: #795E26">use</span><span style="color: #000000">(</span><span style="color: #001080">remarkHTML</span><span style="color: #000000">).</span><span style="color: #795E26">processSync</span><span style="color: #000000">(</span><span style="color: #001080">markdown</span><span style="color: #000000">).</span><span style="color: #001080">contents</span><span style="color: #000000">;</span>
+<span style="color: #000000">  fs.</span><span style="color: #795E26">writeFileSync</span><span style="color: #000000">(</span><span style="color: #A31515">`</span><span style="color: #0000FF">${</span><span style="color: #000000">path.</span><span style="color: #795E26">slice</span><span style="color: #000000">(</span><span style="color: #098658">0</span><span style="color: #000000">, path.</span><span style="color: #001080">length</span><span style="color: #000000"> - </span><span style="color: #A31515">".md"</span><span style="color: #000000">.</span><span style="color: #001080">length</span><span style="color: #000000">)</span><span style="color: #0000FF">}</span><span style="color: #A31515">.html`</span><span style="color: #000000">, </span><span style="color: #001080">html</span><span style="color: #000000">);</span>
+<span style="color: #000000">}</span></code></pre>
+</main>
+    
+</body></html>
